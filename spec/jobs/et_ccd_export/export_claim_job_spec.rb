@@ -7,7 +7,7 @@ RSpec.describe EtCcdExport::ExportJob, type: :job do
       job.perform_now(export)
 
       # Assert
-      expect(export_claim_service).to have_received(:call).with(claim)
+      expect(export_claim_service).to have_received(:call).with(export)
     end
 
     it 'delegates its work to the export response service when it is a response export'

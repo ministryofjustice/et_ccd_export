@@ -26,7 +26,8 @@ $ bundle
 ## General Design
 
 This gem hooks into the ET API application by registering for the 'ClaimExported' event which
-contains everything in a nested hash.  All claimants, respondents, representatives, the pdf file etc..
+contains an entire 'Export' in a nested hash.  As well as the 'external system definition' (for auth details etc..),
+the claim, along with its claimants, respondents, representatives, the pdf file etc..
 The idea being that this is generally for 'external stuff' to deal with - preventing the need for the
 this gem to share the database with the API.  The handler could even be in an external process.
 Note that when we register for this event, we ask for it to be async so that sidekiq is involved for its
@@ -41,6 +42,47 @@ have its own sidekiq instance which would need managing etc..
 
 When CCD also wants to receive a response, we will also register for the 'ResponseExported' event etc...  But for the moment,
 they only want claims.
+
+### What this event data looks like
+
+```ruby
+  {
+    system: {
+        id: 1,
+        name: 'CCD Live System',
+        reference: 'ccd_live',
+        office_codes: [12,14,66,99],
+        enabled: true
+    },
+    claim: {
+        reference: '14201632/2016/10',
+        submission_reference: '1023-4567',
+        other..normal..claim..data,
+        primary_claimant: {
+            claimant_data...
+        },
+        secondary_claimants: [
+            {
+                claimant_data...
+            },
+            {
+                claimant_data...
+            }
+        ],
+        primary_respondent: {
+            respondent_data...
+        },
+        secondary_respondents: [
+            {
+                respondent_data....
+            }
+        ],
+        representative: {
+            representative_data...
+        }
+    }
+  }
+```
 
 ## Contributing
 Contribution directions go here.
