@@ -72,7 +72,8 @@ they only want claims.
             secret: 'somethingsupersecret'
         }
     },
-    claim: {
+    resource_type: 'Claim',
+    resource: {
         reference: '14201632/2016/10',
         submission_reference: '1023-4567',
         other..normal..claim..data,
