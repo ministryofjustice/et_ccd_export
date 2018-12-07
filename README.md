@@ -33,8 +33,10 @@ this gem to share the database with the API.  The handler could even be in an ex
 Note that when we register for this event, we ask for it to be async so that sidekiq is involved for its
 retry mechanism etc..
 
-The event will have a guard condition so this handler will only get told if it is for a particular external
-system (matched by reference).
+The event will have guard conditions so this handler will only get told if it is for a particular external
+system (matched by reference).  Also, the standard functionality of the ET-API is that the event isnt even published unless
+the office code for the claim is handled by the defined external system - so the events we receive SHOULD definitely be
+sent to CCD - we dont have to make a decision inside this gem.
 
 Once this gem receives the event, it will immediately pass it on to CCD via the CCD API. If this fails, the whole handler
 will fail and will rely on the sidekiq process within the API application to re try this event.  This prevents this gem having to
