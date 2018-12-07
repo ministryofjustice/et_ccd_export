@@ -1,8 +1,15 @@
-# EtCcdExport
-Short description and motivation.
+# Et CCD Export
+
+Employment Tribunal (ET) case management tool will soon be replaced with our very own CCD (Core Case Data).
+
+This gem will be installed into the ET-API system and will be responsible for ensuring that every claim gets to CCD.
+
+Responses (ET3) are out of scope initially, but I would guess that they will become in scope at some point.
 
 ## Usage
-How to use my plugin.
+
+There is no configuration apart from adding the gemfile.  The gem will automatically register for the events that
+it wants etc and just work.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -16,10 +23,6 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
-```bash
-$ gem install et_ccd_export
-```
 ## General Design
 
 This gem hooks into the ET API application by registering for the 'ClaimExported' event which
