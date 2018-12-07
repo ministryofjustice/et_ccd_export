@@ -6,6 +6,12 @@ This gem will be installed into the ET-API system and will be responsible for en
 
 Responses (ET3) are out of scope initially, but I would guess that they will become in scope at some point.
 
+The motivation for developing this as a separate gem that could even potentially be a separate process is to
+follow the traditional 12 factor approach (https://12factor.net/) so that the central API on its own becomes nice and
+simple and not a huge monolith.  This approach also allows for much easier development - imagine this gem as an 'adapter' that
+can easily be disabled (either in the admin or just comment it out of the gemfile) - then you dont have to worry about
+having an instance of CCD running in order to make a simple isolated change to the api.
+
 ## Usage
 
 There is no configuration apart from adding the gemfile.  The gem will automatically register for the events that
@@ -26,8 +32,14 @@ $ bundle
 ## General Design
 
 This gem hooks into the ET API application by registering for the 'ClaimExported' event which
-contains an entire 'Export' in a nested hash.  As well as the 'external system definition' (for auth details etc..),
-the claim, along with its claimants, respondents, representatives, the pdf file etc..
+contains an entire 'Export' in a nested hash.
+An 'Export' contains 2 things - a 'system definition' (with details of username, password, any other connection details etc..)
+and a 'resource' - which in this case is a claim.
+The system definition is configured in the main admin for each 'external system' (which CCD is just one of - we also have these
+for ATOS as well).
+
+The claim also includes its claimants, respondents, representatives, the pdf file etc..
+
 The idea being that this is generally for 'external stuff' to deal with - preventing the need for the
 this gem to share the database with the API.  The handler could even be in an external process.
 Note that when we register for this event, we ask for it to be async so that sidekiq is involved for its
@@ -54,7 +66,11 @@ they only want claims.
         name: 'CCD Live System',
         reference: 'ccd_live',
         office_codes: [12,14,66,99],
-        enabled: true
+        enabled: true,
+        config: {
+            url: 'http://ccd.com',
+            secret: 'somethingsupersecret'
+        }
     },
     claim: {
         reference: '14201632/2016/10',
