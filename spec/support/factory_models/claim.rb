@@ -1,9 +1,6 @@
 module EtCcdExport
   module Test
-    class Claim
-      include ActiveModel::Model
-      include ActiveModel::Attributes
-
+    class Claim < Base
       attribute :reference, :string
       attribute :submission_reference, :string
       attribute :submission_channel, :string

@@ -1,10 +1,9 @@
 module EtCcdExport
   module Test
-    class Export
-      include ActiveModel::Model
-      include ActiveModel::Attributes
-
-
+    class Export < Base
+      attribute :system
+      attribute :resource
+      attribute :resource_type
     end
   end
 end

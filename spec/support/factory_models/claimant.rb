@@ -1,8 +1,6 @@
 module EtCcdExport
   module Test
-    class Claimant
-      include ActiveModel::Model
-      include ActiveModel::Attributes
+    class Claimant < Base
 
     end
   end
