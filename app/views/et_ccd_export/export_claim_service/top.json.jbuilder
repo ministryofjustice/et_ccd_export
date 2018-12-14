@@ -27,7 +27,7 @@ json.set! "data" do
     json.set! "if_represented", "No"
   end
   json.set! "receiptDate", "2017-01-01"
-  json.set! "feeGroupReference", nil
+  json.set! "feeGroupReference", '2220000000100'
   json.set! "respondentType" do
     json.set! "respondent_name", nil
     json.set! "respondent_address" do
