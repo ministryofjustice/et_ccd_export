@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :claim, class: EtCcdExport::Test::Claim do
+  factory :claim, class: EtCcdExport::Claim do
     transient do
       number_of_claimants { 1 }
       ready_for_export_to { [] }
@@ -21,7 +21,7 @@ FactoryBot.define do
 
     after(:build) do |claim, evaluator|
       claim.primary_claimant = build(:claimant) if claim.primary_claimant.blank?
-      claim.secondary_claimants.concat build_list(:claimant, evaluator.number_of_claimants - 1)
+      claim.secondary_claimants << build_list(:claimant, evaluator.number_of_claimants - 1)
       claim.claimant_count += evaluator.number_of_claimants
     end
 

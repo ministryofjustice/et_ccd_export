@@ -6,7 +6,7 @@ RSpec.describe EtCcdExport::ExportClaimService do
     # @TODO Stub ccd
   end
   describe '#call' do
-    let(:export) { build(:export, :for_claim).as_json }
+    let(:export) { create(:export, :for_claim) }
     include_context 'with stubbed ccd'
 
     it 'requests a token as it doesnt have one' do

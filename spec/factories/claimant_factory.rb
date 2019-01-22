@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :claimant, class: EtCcdExport::Test::Claimant do
+  factory :claimant, class: EtCcdExport::Claimant do
 
   end
 end

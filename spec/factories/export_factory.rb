@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :export, class: EtCcdExport::Test::Export do
-    system { build(:system) }
+  factory :export, class: EtCcdExport::Export do
+    external_system { build(:system) }
     resource { nil }
 
     trait :for_claim do
