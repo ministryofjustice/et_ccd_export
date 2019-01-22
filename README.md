@@ -55,6 +55,14 @@ have its own sidekiq instance which would need managing etc..
 When CCD also wants to receive an ET3 response, we will also register for the 'ResponseExported' event etc...  But for the moment,
 they only want claims.
 
+The gem shares the application database, but not the application's models.  So, the 'schema' according to this gem is considered
+the 'interface' between this gem and the app.  We only have database attributes that are used in the exporting process
+and it is perfectly acceptable for the application to have more attributes that are not used in the export process.  This
+gem does not need to know about these.
+
+In general, the gem will only read from the database, the only exception to that is removing the 'export' entry when
+the data has been exported.
+
 
 ## Contributing
 Contribution directions go here.
