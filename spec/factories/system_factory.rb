@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :system, class: EtCcdExport::ExternalSystem do
     transient do
+      # @TODO Maybe break this up into servers and paths
       config do
         {
           url: 'http://someurl.com',

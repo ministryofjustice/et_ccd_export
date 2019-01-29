@@ -13,3 +13,5 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+#gem "et_fake_ccd", git: 'https://github.com/ministryofjustice/et_fake_ccd.git'
+gem "et_fake_ccd", path: '../et_fake_ccd'
