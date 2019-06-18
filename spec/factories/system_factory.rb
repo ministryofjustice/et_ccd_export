@@ -9,11 +9,11 @@ FactoryBot.define do
           idam_user_token_exchange_url: 'http://localhost:4501/testing-support/lease',
           create_case_url: 'http://localhost:4452/caseworkers/{uid}/jurisdictions/{jid}/case-types/{ctid}/cases',
           initiate_case_url: 'http://localhost:4452/caseworkers/{uid}/jurisdictions/{jid}/case-types/{ctid}/event-triggers/{etid}/token',
-          user_id: 38,
-          user_role: 'caseworker-publiclaw',
-          secret: 'nottellingyou',
-          jurisdiction_id: 'PUBLICLAW',
-          case_type_id: 'TRIB_MVP_3_TYPE',
+          user_id: 22,
+          user_role: 'caseworker,caseworker-test,caseworker-employment-tribunal-manchester,caseworker-employment,caseworker-employment-tribunal-manchester-caseofficer,caseworker-publiclaw-localAuthority',
+          secret: 'AAAAAAAAAAAAAAAC',
+          jurisdiction_id: 'EMPLOYMENT',
+          case_type_id: 'EmpTrib_MVP_1.0_Manc',
           initiate_claim_event_id: 'initiateCase'
         }
       end

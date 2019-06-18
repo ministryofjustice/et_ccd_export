@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = "et_ccd_export"
   s.version     = EtCcdExport::VERSION
   s.authors     = ["Gary Taylor"]
-  s.email       = ["gary.taylor@hismessages.com"]
+  s.email       = ["gary.taylor@hmcts.net"]
   s.homepage    = ""
   s.summary     = "Summary of EtCcdExport."
   s.description = "Description of EtCcdExport."
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rest-client', '~> 2.0', '>= 2.0.2'
   s.add_dependency 'addressable', '~> 2.5', '>= 2.5.2'
   s.add_dependency 'jbuilder', '2.7.0'
+  s.add_dependency 'rotp', '~> 5.0'
 
   s.add_development_dependency "pg"
   s.add_development_dependency 'rspec-rails', '~> 3.8'

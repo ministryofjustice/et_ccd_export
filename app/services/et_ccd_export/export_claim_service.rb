@@ -25,7 +25,7 @@ module EtCcdExport
 
     def exchange_service_token_for(export)
       url = export.external_system.config[:idam_service_token_exchange_url]
-      resp = RestClient.post(url, {microservice: "et"}.to_json, content_type: 'application/json')
+      resp = RestClient.post(url, {microservice: "ccd_gw"}.to_json, content_type: 'application/json')
       resp.body
     end
 
@@ -44,10 +44,9 @@ module EtCcdExport
     end
 
     def post_claim_to(url, claim:, event_token:)
-      data = ::EtCcdExport::ApplicationController.render('et_ccd_export/export_claim_service/top.json.jbuilder', locals: { claim: claim, event_token: event_token })
+      data = ActionController::Base.render('et_ccd_export/export_claim_service/top.json.jbuilder', locals: { claim: claim, event_token: event_token })
       resp = RestClient.post(url, data, content_type: 'application/json', 'ServiceAuthorization' => "Bearer #{service_token}", :authorization => "Bearer #{user_token}")
       resp
     end
-
   end
 end
