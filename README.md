@@ -1,3 +1,6 @@
+
+# DO NOT USE - DELETE AFTER AUGUST 2019
+
 # EtCcdExport
 Short description and motivation.
 
